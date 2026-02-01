@@ -28,7 +28,6 @@ app.use((req, res, next) => {
 });
 
 /* -------------------- DATABASE -------------------- */
-const mysql = require("mysql2");
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
