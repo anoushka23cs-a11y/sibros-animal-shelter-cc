@@ -1,14 +1,10 @@
 {
-  "name": "sibro's-animal-shelter",
+  "name": "sibros-animal-shelter",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
@@ -17,7 +13,6 @@
     "express-session": "^1.19.0",
     "multer": "^2.0.2",
     "mysql2": "^3.15.3",
-    "nodemon": "^3.1.10",
     "razorpay": "^2.9.6"
   }
 }

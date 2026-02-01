@@ -28,20 +28,21 @@ app.use((req, res, next) => {
 });
 
 /* -------------------- DATABASE -------------------- */
+const mysql = require("mysql");
+
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "animal_shelter",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
 });
 
 db.connect((err) => {
-  if (err) {
-    console.error("❌ DB Connection Error:", err.message);
-    return;
-  }
-  console.log("✅ Connected to MySQL Database");
+  if (err) console.log("DB error:", err);
+  else console.log("MySQL Connected!");
 });
+
 
 /* -------------------- MIDDLEWARES -------------------- */
 function requireAdmin(req, res, next) {
@@ -474,6 +475,5 @@ app.post("/volunteer", requireUser, (req, res) => {
 });
 
 /* -------------------- SERVER -------------------- */
-app.listen(3000, () => {
-  console.log("🌸 Sibro's Animal Shelter running at http://localhost:3000");
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Running on ${PORT}`));
